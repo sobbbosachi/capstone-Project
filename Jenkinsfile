@@ -41,5 +41,16 @@ echo "####Linting operation done####"'''
       }
     }
 
+    stage('Push docker image') {
+      steps {
+        script {
+          docker.withRegistry( '', 'dockerhub_credential' ) {
+            dockerImage.push()
+          }
+        }
+
+      }
+    }
+
   }
 }

@@ -50,4 +50,7 @@ docker image ls
     }
 
   }
+  environment {
+    DOCKER_ID = 'dockerhub_credential'
+  }
 }

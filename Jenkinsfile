@@ -35,17 +35,17 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        script {
-          'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
-        }
-
-        echo 'Docker container build and pusher'
+        sh '''docker build --tag=shovon_capstone_project .
+docker image ls
+'''
+        echo 'Docker container build'
       }
     }
 
     stage('Push docker image') {
       steps {
-        sh 'docker login'
+        sh './upload_docker.sh'
+        echo 'Pushed image to docker repository'
       }
     }
 

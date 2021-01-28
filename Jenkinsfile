@@ -44,7 +44,7 @@ docker image ls
 
     stage('Push docker image') {
       steps {
-        sh 'sudo ./upload_docker.sh'
+        sh './upload_docker.sh'
         echo 'Pushed image to docker repository'
       }
     }

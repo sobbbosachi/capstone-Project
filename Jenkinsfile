@@ -50,12 +50,6 @@ make lint'''
 
     stage('Push docker image') {
       steps {
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-
         sh 'docker login'
       }
     }

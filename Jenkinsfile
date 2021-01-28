@@ -19,7 +19,8 @@ echo "####Virtual environment created####"'''
 
     stage('Install dependencies') {
       steps {
-        sh 'make install'
+        sh '''. ./.capstone-env/bin/activate
+make install'''
       }
     }
 

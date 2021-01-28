@@ -49,6 +49,7 @@ docker image ls
             dockerImage.push()
           }
         }
+
       }
     }
 

@@ -35,7 +35,7 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        sh 'sh "docker build -t sobbosachi/capstone_project ."'
+        sh 'docker build -t sobbosachi/capstone_project .'
         echo 'Docker container build'
       }
     }

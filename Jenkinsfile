@@ -34,14 +34,16 @@ echo "####Linting operation done####"'''
 
     stage('run app') {
       steps {
-        sh '''python3 app.py
+        sh '''. ./.capstone-env/bin/activate
+python3 app.py
 
 if curl -s http://localhost:3200/ | grep "home!"
 then
   echo "done"
 else
   echo "something wrong"
-fi'''
+fi
+echo "####Dependencies installed####"'''
       }
     }
 

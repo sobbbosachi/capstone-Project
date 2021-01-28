@@ -55,7 +55,7 @@ docker image ls
 
   }
   environment {
-    registry = 'sobbosachi/capstone_project'
-    registryCredential = 'dockerhub'
+    registry = "sobbosachi/capstone_project"
+    registryCredential = 'dockerhub_credential'
   }
 }

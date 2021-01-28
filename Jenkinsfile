@@ -39,6 +39,8 @@ make lint'''
           'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
         }
 
+        echo 'Docker container build and pusher'
+        sh './run_docker.sh'
       }
     }
 

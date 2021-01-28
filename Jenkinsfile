@@ -43,7 +43,7 @@ docker image ls
     }
 
     stage('Push docker image') {
-      steps {
+      withDockerRegistry([credentialsId: 'docker_credential']) {  
         sh './upload_docker.sh'
         echo 'Pushed image to docker repository'
       }

@@ -42,5 +42,15 @@ docker image ls
       }
     }
 
+    stage('Push docker image') {
+      steps {
+        script {
+          docker.withRegistry( '', 'dockerhub' ) {
+            dockerImage.push()
+          }
+      }
+    }
+
   }
+
 }

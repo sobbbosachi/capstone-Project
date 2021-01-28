@@ -35,7 +35,9 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        sh './run_docker.sh'
+        sh '''docker build --tag=shovon_capstone_project .
+docker image ls
+'''
         echo 'Docker container build'
       }
     }
@@ -43,6 +45,7 @@ make lint'''
     stage('Push docker image') {
       steps {
         sh 'sudo ./upload_docker.sh'
+        echo 'Pushed image to docker repository'
       }
     }
 

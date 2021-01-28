@@ -40,7 +40,6 @@ make lint'''
         }
 
         echo 'Docker container build and pusher'
-        sh './run_docker.sh'
       }
     }
 

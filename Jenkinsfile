@@ -1,9 +1,5 @@
 pipeline {
-<<<<<<< HEAD
   agent any
-=======
-  agent none
->>>>>>> 2c2280c202ad4704f20a1733ee7d2397fcceb9a9
   stages {
     stage('Check python3') {
       steps {

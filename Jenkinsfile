@@ -55,6 +55,7 @@ docker push $dockerpath'''
 
   }
   environment {
-    DOCKER_ID = 'dockerhub_credential'
+    DOCKER_USER = 'sobbosachi'
+    DOCKER_PASSWORD = 'A8l8Ah3kBt'
   }
 }

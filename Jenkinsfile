@@ -36,7 +36,7 @@ make lint'''
       steps {
         echo 'Building the Docker container...'
         sh '''chmod +x run_docker.sh
-run_docker.sh'''
+./run_docker.sh'''
         echo 'Docker container build'
       }
     }

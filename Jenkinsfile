@@ -47,6 +47,7 @@ docker image ls
         docker.withRegistry( '', 'dockerhub' ) {
           dockerImage.push()
         }
+      }
     }
 
   }

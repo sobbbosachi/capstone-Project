@@ -4,9 +4,7 @@ pipeline {
     stage('Check python3') {
       steps {
         sh '''python3 --version
-which python3
-sudo apt update
-sudo apt upgrade'''
+which python3'''
       }
     }
 

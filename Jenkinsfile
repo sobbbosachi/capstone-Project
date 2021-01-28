@@ -1,8 +1,10 @@
 pipeline {
-  environment {
-    registryCredential = 'dockerhub_credential'
+  agent {
+    docker {
+      image 'capstone_project'
+    }
+
   }
-  agent any
   stages {
     stage('Check python3') {
       steps {
@@ -51,11 +53,15 @@ make lint'''
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
-            }
+          }
         }
 
+        sh 'docker login'
       }
     }
 
+  }
+  environment {
+    registryCredential = 'dockerhub_credential'
   }
 }

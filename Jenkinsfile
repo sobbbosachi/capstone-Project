@@ -35,7 +35,8 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        sh 'docker build -t sobbosachi/capstone_project .'
+        sh '''chmod +x run_docker.sh
+run_docker.sh'''
         echo 'Docker container build'
       }
     }

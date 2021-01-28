@@ -44,7 +44,11 @@ docker image ls
 
     stage('Push docker image') {
       steps {
-        sh './upload_docker.sh'
+        sh '''dockerpath=sobbosachi/capstone_project
+echo "Docker ID and Image: $dockerpath"
+docker login
+docker tag shovon_capstone_project $dockerpath
+docker push $dockerpath'''
         echo 'Pushed image to docker repository'
       }
     }

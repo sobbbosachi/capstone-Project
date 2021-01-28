@@ -46,7 +46,7 @@ docker image ls
       steps {
         sh '''dockerpath=sobbosachi/capstone_project
 echo "Docker ID and Image: $dockerpath"
-docker login -u DOCKER_USER -p DOCKER_PASSWORD
+docker login -u DOCKER_ID
 docker tag shovon_capstone_project $dockerpath
 docker push $dockerpath'''
         echo 'Pushed image to docker repository'
@@ -55,7 +55,6 @@ docker push $dockerpath'''
 
   }
   environment {
-    DOCKER_USER = 'sobbosachi'
-    DOCKER_PASSWORD = 'A8l8Ah3kBt'
+    DOCKER_ID = 'credentials(\'dockerhub_credential\')'
   }
 }

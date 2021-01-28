@@ -45,7 +45,7 @@ docker image ls
     stage('Push docker image') {
       steps {
         script {
-          docker.withRegistry( '', 'dockerhub' ) {
+          docker.withRegistry( '', 'dockerhub_credential' ) {
             dockerImage.push()
           }
         }

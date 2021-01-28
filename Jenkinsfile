@@ -11,7 +11,9 @@ which python3'''
     stage('Create virtualenv & source it') {
       steps {
         sh '''make setup
-source .capstone-env/bin/activate'''
+pwd
+ls -la
+. ./.capstone-env/bin/activate'''
       }
     }
 

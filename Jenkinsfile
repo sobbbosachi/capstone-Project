@@ -32,12 +32,9 @@ echo "####Linting operation done####"'''
       }
     }
 
-    stage('run app') {
+    stage('Build Docker image') {
       steps {
-        sh '''. ./.capstone-env/bin/activate
-python3 app.py
-^C
-echo "####Dependencies installed####"'''
+        sh 'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
       }
     }
 

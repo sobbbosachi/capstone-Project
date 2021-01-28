@@ -12,33 +12,29 @@ which python3'''
       steps {
         sh '''make setup
 pwd
-ls -la
-. ./~/.capstone-env/bin/activate'''
+echo "####Virtual environment created####"'''
       }
     }
 
     stage('Install dependencies') {
       steps {
-        sh 'make install'
+        sh '''. ./.capstone-env/bin/activate
+make install
+echo "####Dependencies installed####"'''
       }
     }
 
     stage('Linting') {
       steps {
-        sh 'make lint'
+        sh '''. ./.capstone-env/bin/activate
+make lint
+echo "####Linting operation done####"'''
       }
     }
 
-    stage('run app') {
+    stage('Build Docker image') {
       steps {
-        sh '''python3 app.py
-
-if curl -s http://localhost:3200/ | grep "home!"
-then
-  echo "done"
-else
-  echo "something wrong"
-fi'''
+        sh 'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
       }
     }
 

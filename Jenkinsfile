@@ -34,7 +34,10 @@ echo "####Linting operation done####"'''
 
     stage('Build Docker image') {
       steps {
-        script 'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
+        echo 'Building the Docker container...'
+        script{
+           'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
+           }
       }
     }
 

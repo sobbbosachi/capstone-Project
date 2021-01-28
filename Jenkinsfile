@@ -12,7 +12,7 @@ which python3'''
       steps {
         sh '''make setup
 pwd
-ll
+ls -la
 source .capstone-env/bin/activate'''
       }
     }

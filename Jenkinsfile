@@ -12,9 +12,8 @@ which python3'''
       steps {
         sh '''make setup
 pwd
-ls -la
 . ./.capstone-env/bin/activate
-make all'''
+echo "####Virtual environment created####"'''
       }
     }
 

@@ -44,13 +44,17 @@ docker image ls
 
     stage('Push docker image') {
       steps {
-        script {
-          docker.withRegistry( '', 'dockerhub' ) {
-            dockerImage.push()
-          }
+        sh '''dockerpath=sobbosachi/capstone_project
+echo "Docker ID and Image: $dockerpath"
+docker login -u DOCKER_ID
+docker tag shovon_capstone_project $dockerpath
+docker push $dockerpath'''
+        echo 'Pushed image to docker repository'
       }
     }
 
   }
-
+  environment {
+    DOCKER_ID = 'credentials(\'dockerhub_credential\')'
+  }
 }

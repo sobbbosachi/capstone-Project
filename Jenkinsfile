@@ -36,7 +36,7 @@ echo "####Linting operation done####"'''
       steps {
         sh '''. ./.capstone-env/bin/activate
 python3 app.py
-^C
+exit()
 if curl -s http://localhost:3200/ | grep "home!"
 then
   echo "done"

@@ -35,11 +35,8 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        script {
-          'dockerImage = docker.build("sobbosachi/capstone_project", "-f Dockerfile .")'
-        }
-
-        echo 'Docker container build and pusher'
+        sh 'sh "docker build -t sobbosachi/capstone_project ."'
+        echo 'Docker container build'
       }
     }
 

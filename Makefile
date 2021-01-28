@@ -6,8 +6,8 @@
 # (Optional) Build a simple integration test
 
 setup:
-	# Create python virtualenv & source it
-	# source ~/.devops/bin/activate
+	#Create python virtualenv & source it
+	#source ~/.capstone-env/bin/activate
 	python3 -m venv ~/.capstone-env
 
 install:

@@ -8,7 +8,7 @@
 setup:
 	#Create python virtualenv & source it
 	#source ~/.capstone-env/bin/activate
-	python3 -m venv .capstone-env
+	python3 -m venv ~/.capstone-env
 
 install:
 	# This should be run from inside a virtualenv

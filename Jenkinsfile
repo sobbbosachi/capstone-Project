@@ -42,7 +42,7 @@ make lint'''
 
     stage('Push docker image') {
       steps {
-        sh 'docker login'
+        sh 'sudo ./upload_docker.sh'
       }
     }
 

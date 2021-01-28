@@ -12,7 +12,6 @@ which python3'''
       steps {
         sh '''make setup
 pwd
-. ./.capstone-env/bin/activate
 echo "####Virtual environment created####"'''
       }
     }
@@ -20,13 +19,16 @@ echo "####Virtual environment created####"'''
     stage('Install dependencies') {
       steps {
         sh '''. ./.capstone-env/bin/activate
-make install'''
+make install
+echo "####Dependencies installed####"'''
       }
     }
 
     stage('Linting') {
       steps {
-        sh 'make lint'
+        sh '''. ./.capstone-env/bin/activate
+make lint
+echo "####Linting operation done####"'''
       }
     }
 

@@ -1,7 +1,4 @@
 pipeline {
-  environment {
-    registryCredential = 'dockerhub_credential'
-  }
   agent any
   stages {
     stage('Check python3') {

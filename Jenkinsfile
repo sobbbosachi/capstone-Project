@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent none
   stages {
     stage('Check python3') {
       steps {
@@ -54,8 +49,5 @@ make lint'''
       }
     }
 
-  }
-  environment {
-    registryCredential = 'dockerhub_credential'
   }
 }

@@ -1,7 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'capstone_project'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }

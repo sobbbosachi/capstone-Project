@@ -43,14 +43,9 @@ docker image ls
     }
 
     stage('Push docker image') {
-      steps {
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerHub' ) {
-            dockerImage.push()
-          }
-        }
-
-      }
+      docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+      app.push("${env.BUILD_NUMBER}")
+      app.push("latest")
     }
 
   }

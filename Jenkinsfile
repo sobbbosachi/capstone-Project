@@ -45,7 +45,7 @@ docker image ls
     stage('Push docker image') {
       steps {
         script {
-          docker.withRegistry( '', 'dockerhub_credential' ) {
+          docker.withRegistry( 'https://registry.hub.docker.com', 'dockerHub' ) {
             dockerImage.push()
           }
         }
@@ -53,9 +53,5 @@ docker image ls
       }
     }
 
-  }
-  environment {
-    registry = "sobbosachi/capstone_project"
-    registryCredential = 'dockerhub_credential'
   }
 }

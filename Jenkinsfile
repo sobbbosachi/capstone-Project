@@ -25,7 +25,7 @@ make lint'''
       }
     }
 
-    stage('Build Docker image') {
+    stage('Docker image build & pushed') {
       steps {
         echo 'Building the Docker container...'
         sh '''docker build --tag=shovon_capstone_project .

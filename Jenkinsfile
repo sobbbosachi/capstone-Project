@@ -11,7 +11,7 @@ which python3'''
     stage('Create virtualenv & source it') {
       steps {
         sh '''ls -ltra
-#make setup'''
+make setup'''
         echo 'Virtual environment created'
       }
     }

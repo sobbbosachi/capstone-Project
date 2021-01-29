@@ -66,11 +66,11 @@ docker image ls
         stage('Deployment') {
           steps {
             withAWS(credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962', region: 'eu-central-1') {
-              sh '''sh \'aws eks --region eu-central-1 update-kubeconfig --name udaCapCluster\'
-sh \'kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/udaCapCluster\'
-sh \'kubectl apply -f deployment.yml\'
-sh \'kubectl get pods\'
-sh \'kubectl get services\''''
+              sh '''aws eks --region eu-central-1 update-kubeconfig --name udaCapCluster
+kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/udaCapCluster
+kubectl apply -f deployment.yml
+kubectl get pods
+kubectl get services'''
             }
 
           }

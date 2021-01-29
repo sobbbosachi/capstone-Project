@@ -33,29 +33,23 @@ make lint'''
 
 '''
         echo 'Docker container build'
-        script {
-          docker.build('sobbosachi/capstone_project:latest', ' .')
-          docker.withRegistry('', 'dockerHub') {
-            docker.image('sobbosachi/capstone_project:latest').push()}
-          }
-
-        }
-      }
-
-      stage('Push to AWS ECR') {
-        steps {
-          script {
-            docker.build('public.ecr.aws/o0b2b3z9/shovon_capstone:latest', ' .')
-            docker.withRegistry('public.ecr.aws/o0b2b3z9', 'ecr:eu-central-1:aaaa28d1-0a6b-4617-874e-85b09b22f962') {
-              docker.image('public.ecr.aws/o0b2b3z9/shovon_capstone:latest').push()}
-            }
-
-          }
-        }
-
-      }
-      environment {
-        registry = 'sobbosachi/capstone_project'
-        registryCredential = 'dockerHub'
       }
     }
+
+    stage('Push to AWS ECR') {
+      steps {
+        script {
+          docker.build('public.ecr.aws/o0b2b3z9/shovon_capstone:latest', ' .')
+          docker.withRegistry('public.ecr.aws/o0b2b3z9', 'ecr:eu-central-1:aaaa28d1-0a6b-4617-874e-85b09b22f962') {
+            docker.image('public.ecr.aws/o0b2b3z9/shovon_capstone:latest').push()}
+          }
+
+        }
+      }
+
+    }
+    environment {
+      registry = 'sobbosachi/capstone_project'
+      registryCredential = 'dockerHub'
+    }
+  }

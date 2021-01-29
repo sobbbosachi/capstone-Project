@@ -39,9 +39,9 @@ make lint'''
     stage('Push to AWS ECR') {
       steps {
         script {
-          docker.build('669482944502.dkr.ecr.eu-central-1.amazonaws.com/shovon_capstone:latest', ' .')
+          docker.build('669482944502.dkr.ecr.eu-central-1.amazonaws.com/shovon:latest', ' .')
           docker.withRegistry('https://669482944502.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:aaaa28d1-0a6b-4617-874e-85b09b22f962') {
-            docker.image('669482944502.dkr.ecr.eu-central-1.amazonaws.com/shovon_capstone:latest').push()}
+            docker.image('669482944502.dkr.ecr.eu-central-1.amazonaws.com/shovon:latest').push()}
           }
 
         }

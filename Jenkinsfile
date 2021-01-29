@@ -56,10 +56,9 @@ docker image ls
         stage('Create kube config') {
           steps {
             withAWS(region: 'eu-central-1', credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962') {
-                sh '''
-aws eks --region eu-central-1 update-kubeconfig --name udaCapCluster
-'''}
-            
+              sh '''aws eks --region eu-central-1 update-kubeconfig --name udaCapCluster
+'''
+            }
 
           }
         }

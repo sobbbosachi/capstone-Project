@@ -49,7 +49,8 @@ make lint'''
 
       stage('Push to Public') {
         steps {
-          sh '''docker build -t shovon_capstone .
+          sh '''aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/o0b2b3z9
+docker build -t shovon_capstone .
 
 docker tag shovon_capstone:latest public.ecr.aws/o0b2b3z9/shovon_capstone:latest
 

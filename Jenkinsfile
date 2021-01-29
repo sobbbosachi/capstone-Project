@@ -47,9 +47,20 @@ make lint'''
         }
       }
 
+      stage('Push to Public') {
+        steps {
+          script {
+            docker.build('public.ecr.aws/o0b2b3z9/shovon_capstone:latest', ' .')
+            docker.withRegistry('https://public.ecr.aws/o0b2b3z9', '') {
+              docker.image('public.ecr.aws/o0b2b3z9/shovon_capstone:latest').push()}
+            }
+
+          }
+        }
+
+      }
+      environment {
+        registry = 'sobbosachi/capstone_project'
+        registryCredential = 'dockerHub'
+      }
     }
-    environment {
-      registry = 'sobbosachi/capstone_project'
-      registryCredential = 'dockerHub'
-    }
-  }

@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Create virtualenv & source it') {
+    stage('Create virtualenv') {
       steps {
         sh '''ls -ltra
 make setup'''
@@ -9,7 +9,7 @@ make setup'''
       }
     }
 
-    stage('Install dependencies') {
+    stage('Source it & Install dependencies') {
       steps {
         sh '''. ./.capstone-env/bin/activate
 make install'''
@@ -28,8 +28,8 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        sh '''#docker build --tag=shovon_capstone_project .
-#docker image ls
+        sh '''docker build --tag=shovon_capstone_project .
+docker image ls
 
 '''
         echo 'Docker container build'

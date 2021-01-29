@@ -49,18 +49,20 @@ make lint'''
 
       stage('Push to Public') {
         steps {
-          script {
-            docker.build('public.ecr.aws/o0b2b3z9/shovon_capstone:latest', ' .')
-            docker.withRegistry('https://public.ecr.aws/o0b2b3z9', '') {
-              docker.image('public.ecr.aws/o0b2b3z9/shovon_capstone:latest').push()}
-            }
+          sh '''docker build -t shovon_capstone .
 
-          }
+docker tag shovon_capstone:latest public.ecr.aws/o0b2b3z9/shovon_capstone:latest
+
+docker push public.ecr.aws/o0b2b3z9/shovon_capstone:latest
+
+
+'''
         }
+      }
 
-      }
-      environment {
-        registry = 'sobbosachi/capstone_project'
-        registryCredential = 'dockerHub'
-      }
     }
+    environment {
+      registry = 'sobbosachi/capstone_project'
+      registryCredential = 'dockerHub'
+    }
+  }

@@ -63,5 +63,18 @@ docker image ls
           }
         }
 
+        stage('Deployment') {
+          steps {
+            withAWS(credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962', region: 'eu-central-1') {
+              sh '''sh \'aws eks --region us-east-1 update-kubeconfig --name capstone\'
+sh \'kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/udaCapCluster\'
+sh \'kubectl apply -f deployment.yml\'
+sh \'kubectl get pods\'
+sh \'kubectl get services\''''
+            }
+
+          }
+        }
+
       }
     }

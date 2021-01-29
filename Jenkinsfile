@@ -43,7 +43,7 @@ docker image ls
     }
 
     stage('Push docker image') {
-      docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+      docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
       app.push("${env.BUILD_NUMBER}")
       app.push("latest")
     }

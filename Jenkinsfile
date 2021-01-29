@@ -1,13 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Check python3') {
-      steps {
-        sh '''python3 --version
-which python3'''
-      }
-    }
-
     stage('Create virtualenv & source it') {
       steps {
         sh '''ls -ltra
@@ -35,12 +28,23 @@ make lint'''
     stage('Build Docker image') {
       steps {
         echo 'Building the Docker container...'
-        sh '''docker build --tag=shovon_capstone_project .
-docker image ls
+        sh '''#docker build --tag=shovon_capstone_project .
+#docker image ls
+
 '''
         echo 'Docker container build'
-      }
-    }
+        script {
+          docker.build('sobbosachi/capstone_project:latest', ' .')
+          docker.withRegistry('', 'dockerHub') {
+            docker.image('sobbosachi/capstone_project:latest').push()}
+          }
 
+        }
+      }
+
+    }
+    environment {
+      registry = 'sobbosachi/capstone_project'
+      registryCredential = 'dockerHub'
+    }
   }
-}

@@ -28,7 +28,7 @@ make lint'''
     stage('Docker image build & pushed') {
       steps {
         echo 'Building the Docker container...'
-        sh '''docker build --tag=shovon_capstone_project .
+        sh '''docker build --tag=capstone_project .
 docker image ls
 
 '''

@@ -34,7 +34,6 @@ docker image ls
 '''
         echo 'Docker container build'
         script {
-          docker.build('sobbosachi/capstone_project:latest', ' .')
           docker.withRegistry('', 'dockerHub') {
             docker.image('sobbosachi/capstone_project:latest').push()}
           }

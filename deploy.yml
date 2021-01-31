@@ -37,7 +37,7 @@ spec:
       #       topologyKey: "kubernetes.io/hostname"
       containers:
       - name: sobbosachi-capstone-project
-        image: 669482944502.dkr.ecr.eu-central-1.amazonaws.com/shovon:latest
+        image: sobbosachi/capstone_project:latest
         command: [
           "python",
           "app.py"

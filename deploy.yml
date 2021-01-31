@@ -42,7 +42,7 @@ spec:
           "python",
           "app.py"
           ]
-        imagePullPolicy: Always
+        imagePullPolicy: "Always"
         ports:
           - containerPort: 3200
         livenessProbe:

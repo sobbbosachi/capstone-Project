@@ -27,17 +27,13 @@ make lint'''
     stage('Docker image build & pushed') {
       steps {
         echo 'Building the Docker container...'
-        sh '''docker build --tag=sobbosachi/capstone_project .
-docker image ls
-
-'''
-        echo 'Docker container build'
         script {
           docker.build('capstone_project:latest', ' .')
           docker.withRegistry('', 'dockerHub') {
             docker.image('sobbosachi/capstone_project:latest').push()}
           }
 
+          echo 'Docker container build'
         }
       }
 

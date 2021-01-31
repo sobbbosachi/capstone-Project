@@ -12,7 +12,7 @@ dockerpath=sobbosachi/capstone_project
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login
-docker tag shovon_capstone_project $dockerpath
+docker tag sobbosachi/capstone_project $dockerpath
 
 # Step 3:
 # Push image to a docker repository

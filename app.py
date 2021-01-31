@@ -26,7 +26,7 @@ INFO = {
 
 @app.route("/")
 def home():
-   return "<h1 style='color:red'>This is home of udacity!</h1>"
+   return "<h1 style='color:red'>This is home of nothing!</h1>"
 
 @app.route('/temp')
 def hello_world():

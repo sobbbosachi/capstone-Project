@@ -70,18 +70,3 @@ spec:
       protocol: TCP
       port: 3200
       targetPort: 3200
-
-      
----
-kind: HorizontalPodAutoscaler
-apiVersion: autoscaling/v1
-metadata:
-  name: capstoneproject
-spec:
-  scaleTargetRef:
-    apiVersion: extensions/v1beta1
-    kind: Deployment
-    name: capstoneproject
-  minReplicas: 1
-  maxReplicas: 4
-  targetCPUUtilizationPercentage: 80

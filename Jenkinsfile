@@ -65,7 +65,7 @@ make lint'''
             withAWS(credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962', region: 'eu-central-1') {
               sh '''#aws eks --region eu-central-1 update-kubeconfig --name sobbosachiCapCluster
 kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/sobbosachiCapCluster
-envsubst < deploy.yaml | tee deployment-final.yaml
+envsubst < deploy.yml | tee deployment-final.yaml
 kubectl apply -f deployment-final.yaml
 kubectl get pods
 kubectl get services'''

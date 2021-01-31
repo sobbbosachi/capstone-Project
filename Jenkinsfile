@@ -5,6 +5,8 @@ pipeline {
       steps {
         sh 'make setup'
         echo 'Virtual environment created'
+        sh '''pwd 
+ls -la'''
       }
     }
 

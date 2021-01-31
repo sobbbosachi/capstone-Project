@@ -26,7 +26,7 @@ INFO = {
 
 @app.route("/")
 def home():
-   return "<h1 style='color:red'>This is home of sobbosachi!</h1>"
+   return "<h1 style='color:red'>This is home of microservices!</h1>"
 
 @app.route('/temp')
 def hello_world():

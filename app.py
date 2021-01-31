@@ -26,7 +26,7 @@ INFO = {
 
 @app.route("/")
 def home():
-   return "<h1 style='color:red'>This is home!</h1>"
+   return "<h1 style='color:red'>This is home of peace!</h1>"
 
 @app.route('/temp')
 def hello_world():

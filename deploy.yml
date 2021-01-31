@@ -40,7 +40,7 @@ spec:
         image: sobbosachi/capstoneproject
         command: [
           "python",
-          "web.py"
+          "app.py"
           ]
         imagePullPolicy: Always
         ports:

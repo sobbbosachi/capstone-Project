@@ -83,4 +83,4 @@ spec:
     name: sobbosachi-capstone-project
   minReplicas: 1
   maxReplicas: 3
-  targetCPUUtilizationPercentage: 85
+  targetCPUUtilizationPercentage: 90

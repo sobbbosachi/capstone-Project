@@ -29,14 +29,14 @@ spec:
               - key: "app"
                 operator: In
                 values:
-                - capstoneproject
+                - udacitycapstoneproject
               - key: "temporary"
                 operator: In
                 values:
                 - "true"
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - name: capstoneproject
+      - name: sobbosachi-capstone-project
         image: sobbosachi/capstone_project 
         command: [
           "python",
@@ -60,7 +60,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstoneproject
+  name: sobbosachi-capstone-project
 spec:
   type: LoadBalancer
   selector:
@@ -68,5 +68,5 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 80
+      port: 81
       targetPort: 3200

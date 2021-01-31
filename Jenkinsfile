@@ -78,7 +78,7 @@ kubectl get services'''
         stage('Cleaning') {
           steps {
             echo 'removing unnecessary docker images '
-            sh 'docker system prune'
+            sh 'docker system prune -f'
           }
         }
 

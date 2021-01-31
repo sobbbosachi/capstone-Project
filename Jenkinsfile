@@ -30,9 +30,9 @@ make lint'''
       steps {
         echo 'Building the Docker container...'
         script {
-          docker.build('sobbosachi/capstone_project:latest', ' .')
+          docker.build('sobbosachi/capstone_project:$GIT_COMMIT', ' .')
           docker.withRegistry('', 'dockerHub') {
-            docker.image('sobbosachi/capstone_project:latest').push()}
+            docker.image('sobbosachi/capstone_project:$GIT_COMMIT').push()}
           }
 
           echo 'Docker container build'
@@ -65,7 +65,8 @@ make lint'''
             withAWS(credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962', region: 'eu-central-1') {
               sh '''#aws eks --region eu-central-1 update-kubeconfig --name sobbosachiCapCluster
 kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/sobbosachiCapCluster
-kubectl apply -f deploy.yml
+envsubst < deploy.yaml | tee deployment-final.yaml
+kubectl apply -f deployment-final.yaml
 kubectl get pods
 kubectl get services'''
             }

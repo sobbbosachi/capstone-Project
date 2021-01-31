@@ -6,8 +6,7 @@ pipeline {
         sh 'make setup'
         echo 'Virtual environment created'
         sh '''pwd 
-ls -la
-$GIT_COMMIT'''
+ls -la'''
       }
     }
 

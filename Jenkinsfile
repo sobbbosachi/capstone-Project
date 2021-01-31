@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Create virtualenv') {
       steps {
-        sh '''ls -ltra
-make setup'''
+        sh 'make setup'
         echo 'Virtual environment created'
       }
     }
@@ -28,7 +27,7 @@ make lint'''
     stage('Docker image build & pushed') {
       steps {
         echo 'Building the Docker container...'
-        sh '''docker build --tag=capstone_project .
+        sh '''docker build --tag=sobbosachi/capstone_project .
 docker image ls
 
 '''

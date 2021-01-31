@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstoneproject
+  name: sobbosachi-capstone-project
   labels:
-    app: capstoneproject
+    app: udacitycapstoneproject
 spec:
   selector:
     matchLabels:
-      app: capstoneproject
+      app: udacitycapstoneproject
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: capstoneproject
+        app: udacitycapstoneproject
     spec:
       terminationGracePeriodSeconds: 60
       affinity:
@@ -64,7 +64,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: capstoneproject
+    app: udacitycapstoneproject
   ports:
     - name: http
       protocol: TCP

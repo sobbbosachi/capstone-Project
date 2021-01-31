@@ -68,5 +68,5 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 3200
+      port: 80
       targetPort: 3200

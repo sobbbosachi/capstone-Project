@@ -35,7 +35,7 @@ docker image ls
         echo 'Docker container build'
         script {
           docker.withRegistry('', 'dockerHub') {
-            docker.image('sobbosachi/capstone_project:latest').push()}
+            docker.image('capstone_project:latest').push()}
           }
 
         }

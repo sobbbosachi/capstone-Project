@@ -68,5 +68,19 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 81
+      port: 80
       targetPort: 3200
+
+---
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v1
+metadata:
+  name: sobbosachi-capstone-project
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: sobbosachi-capstone-project
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 85

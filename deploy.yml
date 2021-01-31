@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone_project
+  labels:
+    app: capstone_project
+spec:
+  selector:
+    matchLabels:
+      app: capstone_project
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  progressDeadlineSeconds: 1200
+  minReadySeconds: 60
+  template:
+    metadata:
+      labels:
+        app: capstone_project
+    spec:
+      terminationGracePeriodSeconds: 60
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: "app"
+                operator: In
+                values:
+                - capstone_project
+              - key: "temporary"
+                operator: In
+                values:
+                - "true"
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - image: capstone_project
+        command: [
+          "python",
+          "web.py"
+          ]
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3200
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            scheme: HTTP
+            port: 3200
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 2
+          timeoutSeconds: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone_project
+spec:
+  type: LoadBalancer
+  selector:
+    app: capstone_project
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3200
+      targetPort: 3200
+
+      
+---
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v1
+metadata:
+  name: capstone_project
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: capstone_project
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 80

@@ -36,7 +36,8 @@ spec:
                 - "true"
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - image: capstone_project
+      - name: capstone_project
+        image: sobbosachi/capstone_project
         command: [
           "python",
           "web.py"

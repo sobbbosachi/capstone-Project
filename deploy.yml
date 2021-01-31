@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: capstone_project
+  name: capstoneproject
   labels:
-    app: capstone_project
+    app: capstoneproject
 spec:
   selector:
     matchLabels:
-      app: capstone_project
+      app: capstoneproject
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       labels:
-        app: capstone_project
+        app: capstoneproject
     spec:
       terminationGracePeriodSeconds: 60
       affinity:
@@ -29,15 +29,15 @@ spec:
               - key: "app"
                 operator: In
                 values:
-                - capstone_project
+                - capstoneproject
               - key: "temporary"
                 operator: In
                 values:
                 - "true"
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - name: capstone_project
-        image: sobbosachi/capstone_project
+      - name: capstoneproject
+        image: sobbosachi/capstoneproject
         command: [
           "python",
           "web.py"
@@ -60,11 +60,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: capstone_project
+  name: capstoneproject
 spec:
   type: LoadBalancer
   selector:
-    app: capstone_project
+    app: capstoneproject
   ports:
     - name: http
       protocol: TCP
@@ -76,12 +76,12 @@ spec:
 kind: HorizontalPodAutoscaler
 apiVersion: autoscaling/v1
 metadata:
-  name: capstone_project
+  name: capstoneproject
 spec:
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment
-    name: capstone_project
+    name: capstoneproject
   minReplicas: 1
   maxReplicas: 4
   targetCPUUtilizationPercentage: 80

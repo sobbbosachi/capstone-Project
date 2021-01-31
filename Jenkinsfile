@@ -63,7 +63,7 @@ make lint'''
         stage('Deployment') {
           steps {
             withAWS(credentials: 'aaaa28d1-0a6b-4617-874e-85b09b22f962', region: 'eu-central-1') {
-              sh '''aws eks --region eu-central-1 update-kubeconfig --name sobbosachiCapCluster
+              sh '''#aws eks --region eu-central-1 update-kubeconfig --name sobbosachiCapCluster
 kubectl config use-context arn:aws:eks:eu-central-1:669482944502:cluster/sobbosachiCapCluster
 kubectl apply -f deploy.yml
 kubectl get pods

@@ -28,7 +28,7 @@ make lint'''
       steps {
         echo 'Building the Docker container...'
         script {
-          docker.build('capstone_project:latest', ' .')
+          docker.build('sobbosachi/capstone_project:latest', ' .')
           docker.withRegistry('', 'dockerHub') {
             docker.image('sobbosachi/capstone_project:latest').push()}
           }
